@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  auth:
+    build:
+      context: .
+      dockerfile: ./packages/auth/Dockerfile
+    volumes:
+      - ".:/opt/app"
+    ports:
+      - 7000:7000
+    container_name: auth-service
+    depends_on: ["dynamodb"]
+
+  dynamodb:
+    image: amazon/dynamodb-local
+    hostname: dynamodb-local
+    container_name: dynamodb-local
+    ports:
+      - "8042:8000"
+    command: ["-jar", "DynamoDBLocal.jar", "-sharedDb", "-inMemory"]

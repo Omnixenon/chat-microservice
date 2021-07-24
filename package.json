@@ -1,0 +1,12 @@
+{
+  "name": "chat-microservice",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "watch": "yarn watch:auth",
+    "watch:auth": "yarn workspace auth watch"
+  }
+}
